@@ -15,6 +15,7 @@
 		743FB6BF1C3E3F9600403C0D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743FB6BE1C3E3F9600403C0D /* MainStoryboard.storyboard */; };
 		743FB6C21C3E435600403C0D /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743FB6C11C3E435600403C0D /* TableViewController.m */; };
 		74DDF3891C3F7529005128E8 /* BlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DDF3881C3F7529005128E8 /* BlogPost.m */; };
+		74DDF3CB1C42E5D1005128E8 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DDF3CA1C42E5D1005128E8 /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		743FB6C11C3E435600403C0D /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		74DDF3871C3F7529005128E8 /* BlogPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogPost.h; sourceTree = "<group>"; };
 		74DDF3881C3F7529005128E8 /* BlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogPost.m; sourceTree = "<group>"; };
+		74DDF3C91C42E5D1005128E8 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		74DDF3CA1C42E5D1005128E8 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 				743FB68F1C3E3E9100403C0D /* AppDelegate.m */,
 				743FB6C01C3E435600403C0D /* TableViewController.h */,
 				743FB6C11C3E435600403C0D /* TableViewController.m */,
+				74DDF3C91C42E5D1005128E8 /* WebViewController.h */,
+				74DDF3CA1C42E5D1005128E8 /* WebViewController.m */,
 				74DDF3871C3F7529005128E8 /* BlogPost.h */,
 				74DDF3881C3F7529005128E8 /* BlogPost.m */,
 				743FB6BE1C3E3F9600403C0D /* MainStoryboard.storyboard */,
@@ -272,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				743FB6901C3E3E9100403C0D /* AppDelegate.m in Sources */,
+				74DDF3CB1C42E5D1005128E8 /* WebViewController.m in Sources */,
 				743FB6C21C3E435600403C0D /* TableViewController.m in Sources */,
 				743FB68D1C3E3E9000403C0D /* main.m in Sources */,
 				74DDF3891C3F7529005128E8 /* BlogPost.m in Sources */,

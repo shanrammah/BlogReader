@@ -37,6 +37,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="voS-dI-pa0" kind="show" identifier="showBlogPost" id="TYv-wl-TEA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -50,6 +53,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ey-5X-ymC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-98" y="-35"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="neS-SG-cTp">
+            <objects>
+                <viewController id="voS-dI-pa0" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DYN-eP-skc"/>
+                        <viewControllerLayoutGuide type="bottom" id="SPv-cY-zCb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wq3-fP-IiF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UP5-ny-Sx3">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="webView" destination="UP5-ny-Sx3" id="KSz-7c-C76"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OLe-bE-Wgf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="-35"/>
         </scene>
         <!--BlogReader-->
         <scene sceneID="ra6-tB-vUH">
