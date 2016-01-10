@@ -34,6 +34,9 @@
     for (NSDictionary *bpDictionary in blogPostsArray) {
         BlogPost *blogPost = [BlogPost blogPostWithtTitle:[bpDictionary objectForKey:@"title"]];
         blogPost.author = [bpDictionary objectForKey:@"author"];
+        blogPost.thumbnail = [bpDictionary objectForKey:@"thumbnail"];
+        blogPost.date = [bpDictionary objectForKey:@"date"];
+        blogPost.url = [NSURL URLWithString:[bpDictionary objectForKey:@"url"]];
         [self.blogPosts addObject:blogPost];
     }
     
@@ -66,10 +69,30 @@
     
     BlogPost *blogPost = [self.blogPosts objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [blogPost valueForKey:@"title"];
-    cell.detailTextLabel.text = [blogPost valueForKey:@"author"]; 
+    
+    if( [blogPost.thumbnail isKindOfClass:[NSString class]]) {
+    
+    NSData *imageData = [NSData dataWithContentsOfURL:blogPost.thumbnailURL];
+    UIImage *image = [UIImage imageWithData:imageData];
+    cell.imageView.image = image;
+        
+    }
+    
+
+    cell.textLabel.text = blogPost.title;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", blogPost.author, [blogPost formattedDate]];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    BlogPost *blogPost = [self.blogPosts objectAtIndex:indexPath.row];
+    UIApplication *application = [UIApplication sharedApplication];
+    [application openURL:blogPost.url];
+    
+    NSLog(@"Row selected: %d",indexPath.row);
 }
 
 /*

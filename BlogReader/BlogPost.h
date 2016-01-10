@@ -12,8 +12,15 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *author;
+@property (nonatomic, strong) NSString *thumbnail;
+@property (nonatomic, strong) NSString *date;
+@property (nonatomic, strong) NSURL *url; 
 
 // Designated Initializer 
 - (id) initWithTitle:(NSString *)title; //after the ":" means the argument
-+ (id) blogPostWithtTitle:(NSString *)title; 
++ (id) blogPostWithtTitle:(NSString *)title;
+
+- (NSURL *) thumbnailURL;
+- (NSString *) formattedDate;
+
 @end
