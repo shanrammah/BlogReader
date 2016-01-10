@@ -99,15 +99,29 @@
     
     BlogPost *blogPost = [self.blogPosts objectAtIndex:indexPath.row];
     
+    cell.imageView.image = [UIImage imageNamed:@"treehouse.png"];
     
     if( [blogPost.thumbnail isKindOfClass:[NSString class]]) {
     
-    NSData *imageData = [NSData dataWithContentsOfURL:blogPost.thumbnailURL];
-    UIImage *image = [UIImage imageWithData:imageData];
-    cell.imageView.image = image;
+        //    NSData *imageData = [NSData dataWithContentsOfURL:blogPost.thumbnailURL];
+        //    UIImage *image = [UIImage imageWithData:imageData];
+        //    cell.imageView.image = image;
+        //    We now load data async
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDownloadTask *task = [session downloadTaskWithURL:blogPost.thumbnailURL completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:location];
+        
+        UIImage *image = [UIImage imageWithData:imageData];
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            cell.imageView.image = image;
+                    
+        });
+    }];
+        [task resume];
         
     }
-    
 
     cell.textLabel.text = blogPost.title;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", blogPost.author, [blogPost formattedDate]];
