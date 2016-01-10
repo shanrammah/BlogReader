@@ -21,6 +21,7 @@
     
     NSURL *blogURL = [NSURL URLWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
     
+    /* //This is the old sync method
     NSData *jsonData = [NSData dataWithContentsOfURL:blogURL];
     
     NSError *error = nil;
@@ -41,8 +42,36 @@
         [self.blogPosts addObject:blogPost];
     }
     
-    // NSLog(@"%@", blogPostsArray);
+    */
     
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSURLSessionDownloadTask *task = [session downloadTaskWithURL:blogURL completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSData *jsonData = [[NSData alloc] initWithContentsOfURL:location];
+        
+        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error]; //you have to pass the reference for an error
+        // NSLog(@"%@", dataDictionary);
+        
+        self.blogPosts = [[NSMutableArray alloc] init];
+        
+        NSArray *blogPostsArray = [dataDictionary objectForKey:@"posts"];
+        
+        for (NSDictionary *bpDictionary in blogPostsArray) {
+            BlogPost *blogPost = [BlogPost blogPostWithtTitle:[bpDictionary objectForKey:@"title"]];
+            blogPost.author = [bpDictionary objectForKey:@"author"];
+            blogPost.thumbnail = [bpDictionary objectForKey:@"thumbnail"];
+            blogPost.date = [bpDictionary objectForKey:@"date"];
+            blogPost.url = [NSURL URLWithString:[bpDictionary objectForKey:@"url"]];
+            [self.blogPosts addObject:blogPost];
+        }
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.tableView reloadData];
+        });
+    }];
+    [task resume];
     
 }
 
